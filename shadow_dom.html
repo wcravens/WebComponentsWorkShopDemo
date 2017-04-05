@@ -1,0 +1,54 @@
+<html lang='en'>
+
+<head>
+  <title>WebComponents Demo</title>
+  <link rel="import" href="/imports/the-awesome-widget.html">
+</head>
+
+<body>
+
+<h2>Widget Demo:</h2>
+
+<hr>
+
+<the-awesome-widget>
+  <p>There is something hiding in here!</p>
+</the-awesome-widget>
+
+</hr>
+
+<script>
+
+window.customElements.define('the-awesome-widget', class extends HTMLElement {
+  constructor() {
+    super();
+
+    // Grap a reference to our target element
+    const targetElement = this;
+    const shadowRoot = this.attachShadow( { mode: 'open' } );
+
+    // Grap a reference to the import documents
+    const link = document.querySelector('link[rel="import"]');
+
+    // Grap a copy of our template
+    const theAwesomeWidgetTemplate      = link.import.querySelector('#the-awesome-widget');
+
+    // Manipulate our template with an inner template
+    const imageTempalte                 = link.import.querySelector('#the-awesome-widget');
+    const imageTemplate                 = link.import.querySelector('#image'); 
+    for( var i = 1; i < 10; i += 1 ) {
+      var clone = imageTemplate.content.cloneNode(true);
+      var img = clone.querySelector('img');
+      img.src = '/images/rocket' + i + '.svg';
+      theAwesomeWidgetTemplate.content.querySelector('#the-awesome-flex-display').appendChild( clone );
+    }
+
+    // Assign our template to the target element
+    shadowRoot.appendChild( theAwesomeWidgetTemplate.content.cloneNode(true) );
+  }
+} );
+
+</script>
+
+</body>
+</html>
