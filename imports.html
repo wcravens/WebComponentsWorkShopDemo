@@ -1,0 +1,45 @@
+<html lang='en'>
+
+<head>
+  <title>WebComponents Demo</title>
+  <link rel="import" href="/imports/the-awesome-widget.html">
+</head>
+
+<body>
+
+<h2>Widget Demo:</h2>
+
+<hr>
+
+<div id="target-element"></div>
+
+</hr>
+
+<script>
+
+  // Grap a reference to our target element
+  const targetElement = document.querySelector('#target-element');
+
+  // Grap a reference to the import documents
+  const link = document.querySelector('link[rel="import"]');
+
+  // Grap a copy of our template
+  const theAwesomeWidgetTemplate      = link.import.querySelector('#the-awesome-widget');
+
+  // Manipulate our template with an inner template
+  const imageTempalte                 = link.import.querySelector('#the-awesome-widget');
+  const imageTemplate                 = link.import.querySelector('#image'); 
+  for( var i = 1; i < 10; i += 1 ) {
+    var clone = imageTemplate.content.cloneNode(true);
+    var img = clone.querySelector('img');
+    img.src = '/images/rocket' + i + '.svg';
+    theAwesomeWidgetTemplate.content.querySelector('#the-awesome-flex-display').appendChild( clone );
+  }
+
+  // Assign our template to the target element
+  targetElement.appendChild( theAwesomeWidgetTemplate.content.cloneNode(true) );
+
+</script>
+
+</body>
+</html>

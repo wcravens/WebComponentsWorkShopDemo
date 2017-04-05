@@ -1,0 +1,46 @@
+<template id="the-awesome-widget">
+
+  <p>This is a totally awesome flex-display!</p>
+  <div id="the-awesome-flex-display"></div>
+
+  <style>
+
+    #the-awesome-flex-display { 
+      padding: .5vw;
+      font-size: 0;
+      display: -ms-flexbox;
+      -ms-flex-wrap: wrap;
+      -ms-flex-direction: column;
+      -webkit-flex-flow: row wrap; 
+      flex-flow: row wrap; 
+      display: -webkit-box;
+      display: flex;
+    }
+
+    #the-awesome-flex-display div { 
+      -webkit-box-flex: auto;
+      -ms-flex: auto;
+      flex: auto; 
+      width: 200px; 
+      margin: .5vw; 
+    }
+
+    #the-awesome-flex-display div img { 
+      width: 100%; 
+      height: auto; 
+    }
+
+    @media screen and (max-width: 400px) {
+      #the-awesome-flex-display div { margin: 0; }
+      #the-awesome-flex-display { padding: 0; }
+      
+    }
+
+  </style>
+
+</template>
+
+
+<template id="image">
+  <div><img></div>
+</template>
